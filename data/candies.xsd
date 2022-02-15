@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+
+        targetNamespace="http://www.itacademy.by/nikita/candies"
+        xmlns:tns="http://www.itacademy.by/nikita/candies"
+        elementFormDefault="qualified">
+
+    <element name="candies">
+        <complexType>
+            <sequence>
+                <element ref="tns:candy" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="candy" type="tns:candy" abstract="true"/>
+    <element name="domestic_candy" type="tns:domesticCandy" substitutionGroup="tns:candy"/>
+    <element name="imported_candy" type="tns:importedCandy" substitutionGroup="tns:candy"/>
+
+    <complexType name="candy">
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="year" type="gYear"/>
+            <element name="energy" type="decimal"/>
+            <element name="type" type="tns:CandyType"/>
+            <element name="ingredients" type="tns:CandyIngredients"/>
+            <element name="value" type="tns:Value"/>
+            <element name="production" type="string"/>
+        </sequence>
+        <attribute name="candy-id" type="tns:candy-id" use="required"/>
+        <attribute name="title" type="string" use="optional"/>
+    </complexType>
+
+    <complexType name="domesticCandy">
+        <complexContent>
+            <extension base="tns:candy">
+                <sequence>
+                    <element name="domestic_candy_properties" type="tns:domesticCandyProperties"/>
+                    <!--<enumeration value="domestic_manufacturer"/>
+                    <enumeration value="0"/>-->
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="importedCandy">
+        <complexContent>
+            <extension base="tns:candy">
+                <sequence>
+                    <element name="imported_candy_properties" type="tns:importedCandyProperties"/>
+                    <!--<enumeration value="domestic_manufacturer"/>
+                    <enumeration value="0"/>-->
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <simpleType name="candy-id">
+        <restriction base="ID">
+            <pattern value="\w{2}\d{2,5}"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="CandyType">
+        <restriction base="string">
+            <enumeration value="chocolate without filling"/>
+            <enumeration value="chocolate with filling"/>
+            <enumeration value="caramel"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="CandyIngredients">
+        <sequence>
+            <element name="water" type="decimal"/>
+            <element name="sugar" type="decimal"/>
+            <element name="fructose" type="decimal"/>
+            <element name="chocolate-type" type="string"/>
+            <element name="vanilla" type="decimal"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Value">
+        <sequence>
+            <element name="protein" type="decimal"/>
+            <element name="fat" type="decimal"/>
+            <element name="carbohydrate" type="decimal"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="parameters">
+        <sequence>
+            <element name="manufacturer" type="string"/>
+            <element name="added_price" type="string"/>
+        </sequence>
+    </complexType>
+
+    <simpleType name="domesticCandyProperties">
+        <restriction base="string">
+            <enumeration value="domestic_manufacturer"/>
+            <enumeration value="0 byn"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="importedCandyProperties">
+        <restriction base="string">
+            <enumeration value="foreign_manufacturer"/>
+            <enumeration value="0.10 byn"/>
+        </restriction>
+    </simpleType>
+</schema>

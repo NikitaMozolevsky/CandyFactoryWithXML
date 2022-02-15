@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<candies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://www.itacademy.by/nikita/candies"
+         xsi:schemaLocation="http://www.itacademy.by/nikita/candies candies.xsd">
+
+    <imported_candy candy-id = "ic01" title = "snickers">
+        <name>snickers</name>
+        <year>2022</year>
+        <energy>488</energy>
+        <type>chocolate with filling</type>
+        <ingredients>
+            <water>0</water>
+            <sugar>50470</sugar>
+            <fructose>0</fructose>
+            <chocolate-type>milk-chocolate</chocolate-type>
+            <vanilla>0</vanilla>
+        </ingredients>
+        <value>
+            <protein>0.86</protein>
+            <fat>2.8</fat>
+            <carbohydrate>5.55</carbohydrate>
+        </value>
+        <production>Mars Inc.</production>
+        <imported_candy_properties>foreign_manufacturer</imported_candy_properties>
+    </imported_candy>
+
+    <domestic_candy candy-id="dc01">
+        <name>kommunarka</name>
+        <year>2020</year>
+        <energy>326</energy>
+        <type>chocolate with filling</type>
+        <ingredients>
+            <water>0</water>
+            <sugar>40490</sugar>
+            <fructose>0</fructose>
+            <chocolate-type>milk-chocolate</chocolate-type>
+            <vanilla>0</vanilla>
+        </ingredients>
+        <value>
+            <protein>1.12</protein>
+            <fat>1.4</fat>
+            <carbohydrate>7.8</carbohydrate>
+        </value>
+        <production>Kommunarka Inc.</production>
+        <domestic_candy_properties>domestic_manufacturer</domestic_candy_properties>
+    </domestic_candy>
+</candies>
