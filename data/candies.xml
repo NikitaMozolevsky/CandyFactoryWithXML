@@ -3,7 +3,7 @@
          xmlns="http://www.itacademy.by/nikita/candies"
          xsi:schemaLocation="http://www.itacademy.by/nikita/candies candies.xsd">
 
-    <imported_candy candy-id = "ic01" title = "snickers">
+    <imported_candy candy_id = "ic01" title = "snickers">
         <name>snickers</name>
         <year>2022</year>
         <energy>488</energy>
@@ -21,10 +21,10 @@
             <carbohydrate>5.55</carbohydrate>
         </value>
         <production>Mars Inc.</production>
-        <imported_candy_properties>foreign_manufacturer</imported_candy_properties>
+        <imported_candy_manufacturer_country>composition_in_England_language</imported_candy_manufacturer_country>
     </imported_candy>
 
-    <domestic_candy candy-id="dc01">
+    <domestic_candy candy_id="dc01">
         <name>kommunarka</name>
         <year>2020</year>
         <energy>326</energy>
@@ -42,6 +42,6 @@
             <carbohydrate>7.8</carbohydrate>
         </value>
         <production>Kommunarka Inc.</production>
-        <domestic_candy_properties>domestic_manufacturer</domestic_candy_properties>
+        <domestic_candy_manufacturer_country>composition_in_Russian_language</domestic_candy_manufacturer_country>
     </domestic_candy>
 </candies>

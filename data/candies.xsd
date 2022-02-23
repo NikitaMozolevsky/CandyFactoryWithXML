@@ -27,7 +27,7 @@
             <element name="value" type="tns:Value"/>
             <element name="production" type="string"/>
         </sequence>
-        <attribute name="candy-id" type="tns:candy-id" use="required"/>
+        <attribute name="candy_id" type="tns:candy_id" use="required"/>
         <attribute name="title" type="string" use="optional"/>
     </complexType>
 
@@ -35,7 +35,7 @@
         <complexContent>
             <extension base="tns:candy">
                 <sequence>
-                    <element name="domestic_candy_properties" type="tns:domesticCandyProperties"/>
+                    <element name="domestic_candy_manufacturer_country" type="tns:domesticCandyManufacturerCountry"/>
                     <!--<enumeration value="domestic_manufacturer"/>
                     <enumeration value="0"/>-->
                 </sequence>
@@ -47,7 +47,7 @@
         <complexContent>
             <extension base="tns:candy">
                 <sequence>
-                    <element name="imported_candy_properties" type="tns:importedCandyProperties"/>
+                    <element name="imported_candy_manufacturer_country" type="tns:importedCandyManufacturerCountry"/>
                     <!--<enumeration value="domestic_manufacturer"/>
                     <enumeration value="0"/>-->
                 </sequence>
@@ -55,7 +55,7 @@
         </complexContent>
     </complexType>
 
-    <simpleType name="candy-id">
+    <simpleType name="candy_id">
         <restriction base="ID">
             <pattern value="\w{2}\d{2,5}"/>
         </restriction>
@@ -94,17 +94,19 @@
         </sequence>
     </complexType>
 
-    <simpleType name="domesticCandyProperties">
+    <simpleType name="domesticCandyManufacturerCountry">
         <restriction base="string">
-            <enumeration value="domestic_manufacturer"/>
-            <enumeration value="0 byn"/>
+            <enumeration value="cheap"/>
+            <enumeration value="from_natural_products"/>
+            <enumeration value="composition_in_Russian_language"/>
         </restriction>
     </simpleType>
 
-    <simpleType name="importedCandyProperties">
+    <simpleType name="importedCandyManufacturerCountry">
         <restriction base="string">
-            <enumeration value="foreign_manufacturer"/>
-            <enumeration value="0.10 byn"/>
+            <enumeration value="expansive"/>
+            <enumeration value="from_non_natural_products"/>
+            <enumeration value="composition_in_England_language"/>
         </restriction>
     </simpleType>
 </schema>

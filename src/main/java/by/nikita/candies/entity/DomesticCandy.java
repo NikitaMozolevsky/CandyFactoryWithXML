@@ -1,14 +1,10 @@
-package nikita.candies.entity;
+package by.nikita.candies.entity;
 
-import java.util.Objects;
+import java.time.Year;
 
 public class DomesticCandy extends AbstractCandy {
 
     private String domesticCandyProperties;
-
-    public DomesticCandy() {
-        super();
-    }
 
     public String getDomesticCandyProperties() {
         return domesticCandyProperties;
@@ -21,6 +17,7 @@ public class DomesticCandy extends AbstractCandy {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("DomesticCandy{");
+        sb.append(super.toString());
         sb.append("domesticCandyProperties='").append(domesticCandyProperties).append('\'');
         sb.append('}');
         return sb.toString();
@@ -31,12 +28,18 @@ public class DomesticCandy extends AbstractCandy {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
+
         DomesticCandy that = (DomesticCandy) o;
-        return Objects.equals(domesticCandyProperties, that.domesticCandyProperties);
+
+        return domesticCandyProperties != null
+                ? domesticCandyProperties.equals(that.domesticCandyProperties)
+                : that.domesticCandyProperties == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), domesticCandyProperties);
+        int result = super.hashCode();
+        result = 31 * result + (domesticCandyProperties != null ? domesticCandyProperties.hashCode() : 0);
+        return result;
     }
 }

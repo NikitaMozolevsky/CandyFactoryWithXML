@@ -1,6 +1,4 @@
-package nikita.candies.entity;
-
-import java.util.Objects;
+package by.nikita.candies.entity;
 
 public class CandyValue {
     private double protein;
@@ -44,14 +42,36 @@ public class CandyValue {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         CandyValue that = (CandyValue) o;
-        return Double.compare(that.protein, protein) == 0 &&
-                Double.compare(that.fat, fat) == 0 &&
-                Double.compare(that.carbohydrate, carbohydrate) == 0;
+
+        if (Double.compare(that.protein, protein) != 0) return false;
+        if (Double.compare(that.fat, fat) != 0) return false;
+        return Double.compare(that.carbohydrate, carbohydrate) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(protein, fat, carbohydrate);
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(protein);
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(fat);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(carbohydrate);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("CandyValue{");
+        sb.append("protein=").append(protein);
+        sb.append(", fat=").append(fat);
+        sb.append(", carbohydrate=").append(carbohydrate);
+        sb.append('}');
+        return sb.toString();
     }
 }
+
+

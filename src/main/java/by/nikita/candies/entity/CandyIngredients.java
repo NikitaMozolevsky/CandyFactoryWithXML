@@ -1,6 +1,4 @@
-package nikita.candies.entity;
-
-import java.util.Objects;
+package by.nikita.candies.entity;
 
 public class CandyIngredients {
     private int water;
@@ -64,13 +62,24 @@ public class CandyIngredients {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         CandyIngredients that = (CandyIngredients) o;
-        return water == that.water && sugar == that.sugar && fructose == that.fructose && vanilla == that.vanilla && Objects.equals(chocolateType, that.chocolateType);
+
+        if (water != that.water) return false;
+        if (sugar != that.sugar) return false;
+        if (fructose != that.fructose) return false;
+        if (vanilla != that.vanilla) return false;
+        return chocolateType != null ? chocolateType.equals(that.chocolateType) : that.chocolateType == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(water, sugar, fructose, chocolateType, vanilla);
+        int result = water;
+        result = 31 * result + sugar;
+        result = 31 * result + fructose;
+        result = 31 * result + (chocolateType != null ? chocolateType.hashCode() : 0);
+        result = 31 * result + vanilla;
+        return result;
     }
 
     @Override
